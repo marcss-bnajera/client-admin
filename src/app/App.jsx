@@ -1,9 +1,21 @@
-import { AuthPage } from "../features/auth/pages/AuthPage";
+import { AppRoutes } from "./router/AppRoutes";
+import { Toaster, toast } from "react-hot-toast";
 
 function App() {
   return (
     <>
-      <AuthPage />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            fontFamily: "inherit",
+            fontWeight: 600,
+            fontSize: "1rem",
+            borderRadius: "8px"
+          }
+        }}
+      />
+      <AppRoutes />
     </>
   );
 }
