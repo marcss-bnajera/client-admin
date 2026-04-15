@@ -1,3 +1,4 @@
+import { Fields } from "../../../features/fields/components/Fields";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
 
@@ -14,7 +15,7 @@ export const DashboardContainer = () => {
 
                 <main className="flex-1 p-6">
                     {/*Children*/}
-                    Contenido del menu
+                    <Fields />
                 </main>
             </div>
         </div>

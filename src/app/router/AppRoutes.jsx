@@ -10,8 +10,11 @@ export const AppRoutes = () => {
             <Route path="/" element={<AuthPage />} />
 
             {/* PROTEGIDO POR ROLE */}
-            <Route path="/dashboard/*" element={<DashboardPage />} />
+            <Route
+                path="/dashboard/*" element={<DashboardPage />} />
+
+            {/* Ruta temporal para pruebas */}
+            <Route path="*" element={<h1>Página no encontrada</h1>} />
         </Routes>
     );
 }
-

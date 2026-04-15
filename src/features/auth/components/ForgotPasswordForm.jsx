@@ -13,27 +13,27 @@ export const ForgotPasswordForm = ({ onSwitch }) => {
                     placeholder="correo@ejemplo.com"
                     className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
-
-                <button
-                    type="submit"
-                    className="w-full bg-main-blue text-white py-2.5 px-4 rounded-lg text-sm font-medium hover:opacity-90 transition"
-                >
-                    Enviar correo
-                </button>
-
-                <p className="text-center text-sm text-gray-600">
-                    ¿Recordaste tu contraseña?{" "}
-
-                </p>
-
-                <button
-                    type="button"
-                    onClick={onSwitch}
-                    className="text-main-blue font-medium hover:underline"
-                >
-                    Iniciar sesión
-                </button>
             </div>
+
+            <button
+                type="submit"
+                className="w-full bg-main-blue text-white py-2.5 px-4 rounded-lg text-sm font-medium hover:opacity-90 transition"
+            >
+                Enviar correo
+            </button>
+
+            <p className="text-center text-sm text-gray-600">
+                ¿Recordaste tu contraseña?{" "}
+
+            </p>
+
+            <button
+                type="button"
+                onClick={onSwitch}
+                className="text-main-blue font-medium hover:underline"
+            >
+                Iniciar sesión
+            </button>
         </form>
     );
 };
