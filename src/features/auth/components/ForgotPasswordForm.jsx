@@ -24,16 +24,14 @@ export const ForgotPasswordForm = ({ onSwitch }) => {
 
             <p className="text-center text-sm text-gray-600">
                 ¿Recordaste tu contraseña?{" "}
-
+                <button
+                    type="button"
+                    onClick={onSwitch}
+                    className="text-main-blue font-medium hover:underline"
+                >
+                    Iniciar sesión
+                </button>
             </p>
-
-            <button
-                type="button"
-                onClick={onSwitch}
-                className="text-main-blue font-medium hover:underline"
-            >
-                Iniciar sesión
-            </button>
         </form>
     );
 };
