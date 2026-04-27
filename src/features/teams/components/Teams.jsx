@@ -1,6 +1,9 @@
-import { Spinner } from "../../auth/components/Spinner.jsx";
+import { useState } from "react";
+import { Spinner } from "../../auth/components/Spinner";
+import { TeamModal } from "./TeamModal.jsx";
 
-export const Reservations = () => {
+export const Teams = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const loading = false;
 
     if (loading) return <Spinner />;
@@ -8,93 +11,84 @@ export const Reservations = () => {
     return (
         <div className="p-4">
             {/* HEADER */}
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-main-blue">
-                    Gestión de Reservaciones
-                </h1>
-                <p className="text-gray-500 text-sm">
-                    Administra y confirma las reservaciones pendientes
-                </p>
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+                <div>
+                    <h1 className="text-3xl font-bold text-main-blue">
+                        Gestión de Equipos
+                    </h1>
+                    <p className="text-gray-500 text-sm">
+                        Administra los equipos registrados
+                    </p>
+                </div>
+
+                {/* Abrimos el modal al hacer clic */}
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90 transition-all"
+                >
+                    + Agregar Equipo
+                </button>
             </div>
 
             {/* GRID */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-                {/* CARD */}
-                <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-[1.02]">
+                {/* CARD 1 */}
+                <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:scale-[1.02]">
+                    <div className="w-full h-52 bg-gray-100 flex items-center justify-center">
+                        <img
+                            src="https://via.placeholder.com/300x200"
+                            alt="Equipo"
+                            className="max-h-full max-w-full object-contain rounded-t-xl"
+                        />
+                    </div>
                     <div className="p-5">
-                        {/* TITLE */}
-                        <h2 className="text-lg font-bold text-gray-800">
-                            Cancha Central
-                        </h2>
-
-                        <p className="text-sm text-gray-400 truncate">
-                            Usuario: usuario123
-                        </p>
-
-                        {/* BADGES */}
-                        <div className="flex gap-2 mt-3 flex-wrap">
-                            <span className="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-700 font-medium">
-                                12/04/2026
-                            </span>
-
-                            <span className="px-3 py-1 text-xs rounded-full bg-purple-100 text-purple-700 font-medium">
-                                10:00 - 11:00
-                            </span>
-
-                            <span className="px-3 py-1 text-xs rounded-full font-medium bg-yellow-100 text-yellow-700">
-                                PENDING
-                            </span>
+                        <h2 className="text-xl font-bold text-main-blue">Barcelona FC</h2>
+                        <div className="flex gap-2 mt-2">
+                            <span className="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-700 font-medium">Fútbol 7</span>
+                            <span className="px-3 py-1 text-xs rounded-full bg-purple-100 text-purple-700 font-medium">Manager</span>
                         </div>
-
-                        {/* ACTION */}
-                        <div className="mt-5">
-                            <button className="w-full py-2 rounded-lg text-white font-medium transition bg-main-blue hover:opacity-90">
-                                ✔ Confirmar
-                            </button>
+                        <p className="text-sm text-gray-700 mt-2 truncate font-medium">
+                            <span className="text-gray-400 font-normal">Rep: </span>
+                            Juan Pérez (@juanperez)
+                        </p>
+                        <div className="flex gap-3 mt-5">
+                            <button className="flex-1 py-2 rounded-lg bg-main-blue text-white font-medium hover:opacity-90 transition">✏️ Editar</button>
+                            <button className="flex-1 py-2 rounded-lg bg-red-600 text-white font-medium hover:bg-red-700 transition">🗑️ Eliminar</button>
                         </div>
                     </div>
                 </div>
 
-                {/* CARD CONFIRMADA */}
-                <div className="bg-white rounded-xl shadow-md border border-gray-100">
+                {/* CARD 2 */}
+                <div className="bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02]">
+                    <div className="w-full h-52 bg-gray-100 flex items-center justify-center">
+                        <img
+                            src="https://via.placeholder.com/300x200"
+                            alt="Equipo"
+                            className="max-h-full max-w-full object-contain rounded-t-xl"
+                        />
+                    </div>
                     <div className="p-5">
-                        <h2 className="text-lg font-bold text-gray-800">
-                            Cancha Norte
-                        </h2>
-
-                        <p className="text-sm text-gray-400 truncate">
-                            Usuario: usuario456
-                        </p>
-
-                        <div className="flex gap-2 mt-3 flex-wrap">
-                            <span className="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-700 font-medium">
-                                13/04/2026
-                            </span>
-
-                            <span className="px-3 py-1 text-xs rounded-full bg-purple-100 text-purple-700 font-medium">
-                                15:00 - 16:00
-                            </span>
-
-                            <span className="px-3 py-1 text-xs rounded-full font-medium bg-green-100 text-green-700">
-                                CONFIRMED
-                            </span>
+                        <h2 className="text-xl font-bold text-main-blue">Real Madrid</h2>
+                        <div className="flex gap-2 mt-2">
+                            <span className="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-700 font-medium">Fútbol 11</span>
+                            <span className="px-3 py-1 text-xs rounded-full bg-purple-100 text-purple-700 font-medium">Manager</span>
                         </div>
-
-                        <div className="mt-5">
-                            <button className="w-full py-2 rounded-lg text-white font-medium bg-gray-400 cursor-not-allowed">
-                                ✔ Confirmada
-                            </button>
+                        <p className="text-sm text-gray-700 mt-2 truncate font-medium">
+                            <span className="text-gray-400 font-normal">Rep: </span>
+                            Carlos Ruiz (@carlos)
+                        </p>
+                        <div className="flex gap-3 mt-5">
+                            <button className="flex-1 py-2 rounded-lg bg-main-blue text-white font-medium">✏️ Editar</button>
+                            <button className="flex-1 py-2 rounded-lg bg-red-600 text-white font-medium">🗑️ Eliminar</button>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-            {/* EMPTY STATE */}
-            <div className="text-center text-gray-500 mt-10">
-                No hay reservaciones registradas
-            </div>
+            {isModalOpen && (
+                <TeamModal onClose={() => setIsModalOpen(false)} />
+            )}
         </div>
     );
 };
