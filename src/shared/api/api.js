@@ -6,7 +6,15 @@ const axiosAuth = axios.create({
     baseURL: import.meta.env.VITE_AUTH_URL,
     timeout: 8000,
     headers: {
-        "Content-Type": "application/json" // Corregido: application (singular)
+        "Content-Type": "application/json"
+    }
+});
+
+const axiosAdmin = axios.create({
+    baseURL: import.meta.env.VITE_AUTH_URL,
+    timeout: 80000,
+    headers: {
+        "Content-Type": "application/json"
     }
 });
 
@@ -16,6 +24,17 @@ axiosAuth.interceptors.request.use((config) => {
     const token = useAuthStore.getState().token;
     if (token) {
         // Corregido: "Bearer " + token (con espacio, sin punto)
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+axiosAdmin.interceptors.request.use((config) => {
+    // Tag del cliente para que el interceptor de refresh reintente
+    // en el mismo "backend" (auth vs admin).
+    config._axiosClient = "admin";
+    const token = useAuthStore.getState().token;
+    if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -99,5 +118,8 @@ const handleRefreshToken = async function (_error) {
 };
 
 axiosAuth.interceptors.response.use((res) => res, handleRefreshToken);
+axiosAdmin.interceptors.response.use((res) => res, handleRefreshToken);
 
-export { axiosAuth, handleRefreshToken };
+// ====================== EXPORT AXIOS ================================
+export { axiosAdmin, axiosAuth }
+export { handleRefreshToken };
