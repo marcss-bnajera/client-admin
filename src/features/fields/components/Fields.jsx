@@ -7,6 +7,7 @@ import { useUIStore } from "../../auth/store/uiStore";
 import { showError } from "../../../shared/utils/toast";
 import { Spinner } from "../../auth/components/Spinner";
 import { FieldModal } from "./FieldModal";
+import { showConfirmToast } from "../../auth/components/ConfirmModal";
 
 export const Fields = () => {
     // 1. Destructuración completa (agregamos deleteField)
@@ -110,10 +111,13 @@ export const Fields = () => {
                                 <button
                                     className="flex-1 py-2 rounded-lg bg-red-600 text-white font-medium hover:bg-red-700 transition"
                                     onClick={() =>
-                                        openConfirm({
+                                        showConfirmToast({
                                             title: "Eliminar campo",
                                             message: `¿Eliminar ${field.fieldName}?`,
-                                            onConfirm: () => deleteField(field._id),
+                                            onConfirm: () => {
+                                                console.log("CONFIRM EJECUTADO");
+                                                deleteField(field._id);
+                                            }
                                         })
                                     }
                                 >
@@ -135,6 +139,6 @@ export const Fields = () => {
                 field={selectedField}
             />
 
-        </div>
+        </div >
     );
 };

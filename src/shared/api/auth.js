@@ -1,12 +1,12 @@
 import { axiosAuth } from "./api";
 
 export const login = async (data) => {
-    return await axiosAuth.post("/auth/login", data);
+    return await axiosAuth.post("/api/v1/Auth/login", data);
 };
 
-export const register = async () => {
+export const register = async (data) => {
     return await axiosAuth.post("/auth/register", data, {
-        Headers: { "Content-type": "multipart/form-data" }
+        headers: { "Content-Type": "multipart/form-data" }
     });
 };
 
@@ -22,7 +22,7 @@ export const verifyEmail = async (token) => {
     return await axiosAuth.post("/auth/verify-email", { token });
 };
 
-export const updateUserRole = async () => {
+export const updateUserRole = async (userId, roleName) => {
     return await axiosAuth.post(`/users/${userId}/role`, { roleName });
 };
 

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useAuthStore } from '../../features/auth/store/authStore.js';
 
+console.log("La URL de Auth es:", import.meta.env.VITE_AUTH_URL);
+
 // Instancia de axios
 const axiosAuth = axios.create({
     baseURL: import.meta.env.VITE_AUTH_URL,
